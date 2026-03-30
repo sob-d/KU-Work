@@ -1,27 +1,25 @@
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
 int main() {
     long long L, N;
-    if (!(cin >> L >> N)) return 0;
-    
-    long long current_flowers = 0;
+    cin >> L >> N;
+
+    long long current_total = 0;
     long long k = 0;
-    
-    while (current_flowers < N) {
+
+    while (current_total < N) {
         k++;
-        current_flowers += (L * k);
+        current_total += (k * L);
     }
-    
-    
-    long long flowers_in_prev_k = L * (k - 1) * k / 2;
-    long long remaining = N - flowers_in_prev_k;
-    
-    long long band = (remaining + L - 1) / L;
-    
-    cout << band << endl;
+
+    long long prev_total = (k - 1) * k / 2 * L;
+    long long remaining = N - prev_total;
+
+    long long ans = (remaining + L - 1) / L;
+
+    cout << ans << endl;
 
     return 0;
 }
